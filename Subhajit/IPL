@@ -1,0 +1,47 @@
+import time
+import unittest
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+
+class IPL(unittest.TestCase):
+
+    def setUp(self) -> None:
+        global driver
+        driver = webdriver.Chrome()
+        driver.maximize_window()
+        driver.get("https://www.iplt20.com/matches/schedule/men")
+        driver.implicitly_wait(10)
+        # Accept cookies
+        driver.find_element(By.XPATH, "//button[text()='Accept cookies']").click()
+
+    def test_Find_Match_stadium(self):
+
+        driver.find_element(By.XPATH, "//div[text()='All Venues']").click()
+        All_Venues = driver.find_elements(By.XPATH, ".//div[contains(@ng-repeat, 'filter:cSBGroundsListSearch')]")
+        for venues in All_Venues:
+            print(venues.text)
+
+    def test_GetDates(self):
+        # Click on Matches
+        driver.find_element(By.XPATH, "//ul[contains(@class, 'site-menu')]//li[contains(@class,'active')]").click()
+        #  click on Results
+        driver.find_element(By.XPATH, "//a[text()='RESULTS']").click()
+        # get all dates
+        All_Dates = driver.find_elements(By.XPATH, "//div[contains(@class,'vn-matchDateTime')]")
+        for elem in All_Dates:
+            print(elem.text)
+
+    def test_Results(self):
+        driver.get("https://www.iplt20.com/matches/results/men/2020")
+        # click on Season 2023 dropdown option
+        driver.find_element(By.XPATH, "//div[text()='SEASON 2023']").click()
+        # select 2022
+        driver.find_element(By.XPATH, "//div[text()='2020']").click()
+        # get all played matches details
+        All_Matches = driver.find_elements(By.XPATH, "//div[contains(@class,'vn-ticketTitle')]")
+        for match in All_Matches:
+            print(match.text)
+
+unittest.main()
