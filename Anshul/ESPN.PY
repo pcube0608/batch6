@@ -1,9 +1,6 @@
 import time
-
 from selenium import webdriver
-
 import unittest
-
 from selenium.webdriver import ActionChains
 from selenium.webdriver.common.by import By
 
