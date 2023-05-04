@@ -39,7 +39,5 @@ class Espn(unittest.TestCase):
         for out_player in got_out_players_list:
             print(out_player.text)
 
-
-
-    def tearDown(self) -> None:
-        driver.close()
+   def tearDown(self) -> None:
+       driver.close()
