@@ -1,0 +1,90 @@
+import time
+
+from selenium import webdriver
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.select import Select
+
+JIO=webdriver.Chrome()
+
+
+JIO.get("https://www.jiomart.com")
+#time.sleep(5)
+JIO.maximize_window()
+
+menu=JIO.find_element(By.XPATH,"//button[@id='btn_ham_menu']")
+menu.click()
+#time.sleep(5)
+ShortByCategory=JIO.find_element(By.XPATH,"//span[contains(text(),'Shop By Category')]").click()
+time.sleep(10)
+
+furniture=JIO.find_element(By.XPATH,"//div[@data-target='#category-12884']")
+Cate=JIO.find_element(By.XPATH,"(//div[contains(text(),'Popular Categories')])[2]")
+WorkAStudy=JIO.find_element(By.XPATH,"//div[@data-target='#sub-category-13452']")
+Ac = ActionChains(JIO)
+#Ac.move_to_element(furniture).perform()
+Ac.scroll_to_element(Cate).perform()
+furniture.click()
+
+Ac.move_to_element(WorkAStudy).perform()
+WorkAStudy.click()
+chair=JIO.find_element(By.XPATH,"(//div[contains(text(),'Chairs')])[2]")
+Ac.move_to_element(chair).click().perform()
+time.sleep(5)
+ShortBY=JIO.find_element(By.XPATH,"//span[contains(text(),'Sort by:')]")
+# sel =Select(ShortBY)
+# Select.select_by_index(2)
+Ac.click_and_hold(ShortBY).click().perform()
+HtL=JIO.find_element(By.XPATH,"//*[@id='sort_container']/li[2]/div/div/label/div")
+HtL.click()
+#Ac.move_to_element(HtL).click().perform()
+time.sleep(10)
+#//*[@id="algolia_hits"]/div/div/ol/li[1]
+ChairLIst=JIO.find_elements(By.XPATH,"//*[@id='algolia_hits']/div/div/ol/li/a/div[1]")
+count=len(ChairLIst)
+print(count)
+i=1
+d={}
+for i in range(5):
+    ChairName= ChairLIst[i].get_attribute("data-name")
+    ChairPrice=ChairLIst[i].get_attribute("data-price")
+    d[ChairName]=ChairPrice
+
+
+
+
+print(d)
+
+#{'Ample Seatings Aluminium Ergohuman Leather Seat Hb Chair': '51,500.00', 'Ample Seatings Aluminium 4D Armrest Any Position Locking Ergohuman Ergonomic Chair': '49,875.00', 'Ample Seatings Black Multi-Tilt Lock Mechanism And 3-Dimensional Adjustable Armrest Optima Taiwan High-Back Mesh Ergonomic Chair For Home And Office': '28,499.00', 'The Office Room FILO High Mesh Back with Adjustable Armrest and Italian DONA Multi Locking Synchro Mechanism Executive Chairs Boss Office Chair': '22,390.00', 'Ample Seatings Alloy Steel And Nylon Height Adjustable Arms Spyder Hb Chair With Mesh Seat Slide': '19,099.00'}
+
+
+# for na in d.keys():
+#     print(na)
+#     JIO.find_element(By.XPATH,"//*[contains(text(),"+print(na)+")]//..//..//..//..").click()
+
+#//*[contains(text(),"Ample Seatings Aluminium Ergohuman Leather Seat Hb Chair")]//..//..//..//..
+#//*[contains(text(),"d.keys()")]//..//..//..//..
+#ct=len(d.keys())
+#i=1
+for na in d.keys():
+    JIO.find_element(By.XPATH, "//*[contains(text(),'"+(na)+"')]").click()
+    article=JIO.find_element(By.XPATH,"//*[contains(text(),'Article ID:')]")
+    Ac.move_to_element(article).perform()
+    Articlelist =JIO.find_element(By.XPATH,"//section[8]/input")
+    a1=Articlelist.get_attribute("value")
+    #    print(a1)
+    d[a1]=d[na]
+    del d[na]
+#        print(d)
+
+    JIO.back()
+    time.sleep(5)
+
+# Ample Seatings Black Multi-Tilt Lock Mechanism And 3-Dimensional Adjustable Armrest Optima Taiwan High-Back Mesh Ergonomic Chair For Home And Office
+#
+# //*[contains(text(),"Ample Seatings Black Multi-Tilt Lock Mechanism And 3-Dimensional Adjustable Armrest Optima Taiwan High-Back Mesh Ergonomic Chair For Home And Office")]
+
+
+
+
+print(d)
