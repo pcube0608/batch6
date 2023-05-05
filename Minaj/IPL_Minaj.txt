@@ -1,0 +1,59 @@
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+from selenium.webdriver.support.select import Select
+from selenium.webdriver import ActionChains
+
+driver = webdriver.Chrome()
+driver.get("https://www.iplt20.com/matches/schedule/men")
+driver.maximize_window()
+
+print(driver.current_url)
+time.sleep(3)
+
+action=ActionChains(driver)
+
+driver.find_element(By.XPATH,'//button[text()="Accept cookies"]').click()
+time.sleep(1)
+
+dropdown= driver.find_element(By.XPATH,'//div[text()="All Venues"]').click()
+time.sleep(3)
+
+elements=driver.find_elements(By.XPATH,'//div[@class="cSBList active"]/div[@class="cSBListItems ng-binding ng-scope"]')
+count=len(elements)
+
+List_venues=[]
+
+for i in range(count):
+    List_venues.append(elements[i].text)
+print(List_venues)
+
+list=driver.find_elements(By.XPATH,'//div[@class="vn-matchDate ng-binding"]')
+count2=len(list)
+list_dates=[]
+
+for i in range(count2):
+    list_dates.append(list[i].text)
+print(list_dates)
+
+
+matches=driver.find_element(By.XPATH,'(//a[text()="MATCHES"])[2]').click()
+time.sleep(3)
+
+results=driver.find_element(By.XPATH,'//a[text()="RESULTS"]').click()
+time.sleep(3)
+
+resultslist= driver.find_elements(By.XPATH,'//div[@class="vn-ticketTitle ng-binding ng-scope"]')
+count3=len(resultslist)
+results=[]
+
+for i in range(count3):
+    results.append(resultslist[i].text)
+print(results)
+
+
+
+
+
+
+
