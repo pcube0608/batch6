@@ -1,0 +1,71 @@
+
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+import time
+
+# Navigate to the URL.
+driver = webdriver.Chrome()
+driver.maximize_window()
+driver.get("https://www.gog.com/")
+
+# Performing click on the Store button.
+Click_Store = driver.find_element(By.XPATH, "//div[@hook-test='menuStore']")
+Click_Store.click()
+time.sleep(2)
+
+# Print the Current URL.
+print(driver.current_url)
+
+# Performing click on the view button.
+Click_view = driver.find_element(By.XPATH, "//span[@class='display-switch__icon icon-list']")
+Click_view.click()
+time.sleep(2)
+
+# toggle back to grid view
+Click_view1 = driver.find_element(By.XPATH, "//span[@class= 'display-switch__icon icon-grid']")
+Click_view1.click()
+time.sleep(2)
+
+# # select the game.
+Select_game = driver.find_element(By.XPATH, "//a[@href='https://www.gog.com/en/game/heroes_of_might_and_magic_3_complete_edition']")
+Select_game.click()
+time.sleep(3)
+
+# # Add to cart.
+AddTo_Cart1 = driver.find_element(By.XPATH, "//button[@class='button button--big cart-button ng-scope']")
+AddTo_Cart1.click()
+time.sleep(2)
+
+# Navigate to back.
+BackTo_Home = driver.find_element(By.XPATH, "//a[@class='menu__logo']")
+BackTo_Home.click()
+time.sleep(3)
+
+# Click on Last Chance button.
+Click_LastChance = driver.find_element(By.XPATH, "//div[contains(text(),'Last chance!')]")
+Click_LastChance.click()
+time.sleep(3)
+
+print(driver.current_url)
+
+Click_ShowMeTheDiscount = driver.find_element(By.XPATH, "(//a[@class='hero__button ng-star-inserted'])[1]")
+Click_ShowMeTheDiscount.click()
+time.sleep(2)
+
+# Select the first discount game
+Select_discountGame = driver.find_element(By.XPATH, "(//a[@href='https://www.gog.com/en/game/xcom_2'])[2]")
+Select_discountGame.click()
+
+# perform click on Discount button.
+DiscountGame_AddToCart = driver.find_element(By.XPATH, "//button[@class='button button--big cart-button ng-scope']")
+DiscountGame_AddToCart.click()
+time.sleep(2)
+
+Final_AddToCart = driver.find_element(By.XPATH, "//a[@class='menu-link menu-link--icon menu-link--cart']")
+Final_AddToCart.click()
+time.sleep(3)
+
+CheckOut = driver.find_element(By.XPATH, "//a[@hook-test='cartCheckoutNow']")
+CheckOut.click()
+time.sleep(5)
+
