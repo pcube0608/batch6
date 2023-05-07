@@ -1,0 +1,46 @@
+
+from selenium import webdriver
+from selenium.webdriver import ActionChains
+from selenium.webdriver.common.by import By
+import unittest
+import time
+
+
+class Coca_Cola(unittest.TestCase):
+
+    def setUp(self) -> None:
+        global driver
+        driver = webdriver.Chrome()
+        driver.maximize_window()
+        driver.get("https://www.coca-colacompany.com/")
+
+    def test_Search(self):
+        driver.find_element(By.XPATH, "//button[text()='Confirm my Choices']").click()
+        time.sleep(3)
+        driver.find_element(By.ID, "recitemeIcon").click()
+        time.sleep(3)
+        Recite_list = driver.find_elements(By.XPATH, "//a[@class='cmp-navigation__item-link']")
+        Action = ActionChains(driver)
+        for menu in Recite_list:
+            Action.move_to_element(menu).pause(3).perform()
+
+        driver.find_element(By.ID, "recite-close").click()
+        driver.find_element(By.ID, "recite-modal-button-ok").click()
+
+        driver.find_element(By.ID, "searchIcon").click()
+        time.sleep(2)
+        driver.find_element(By.XPATH, "//button[contains(@id, 'btn_contentType')]").click()
+
+        MediaType_List = driver.find_elements(By.XPATH, "//li[@role='presentation']//a")
+        count = len(MediaType_List)
+
+        for i in range(0, count-1):
+            MediaType_List[i].click()
+            time.sleep(5)
+            each_media = driver.find_elements(By.XPATH, "//div[contains(@class, 'searchResult__title')]/a")
+            for elem in each_media:
+                url = elem.get_attribute("href")
+                print(url)
+
+            driver.find_element(By.XPATH, "//button[contains(@id, 'btn_contentType')]").click()
+
