@@ -2,7 +2,7 @@
 Documentation       These Are The Variables That Are Used In rosource_yatra
 
 *** Variables ***
-${url}              https://www.yatra.com/?_ga=2.160910778.604869328.1679376427-1726181808.1679376427
+${url}              https://www.yatra.com
 ${broswer}          chrome
 ${depart.city}           New Delhi
 ${arrive.city}           Mumbai
