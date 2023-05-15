@@ -1,5 +1,4 @@
 *** Variables ***
-${URL}          https://uat.goibibo.com/
-${URL}          https://uat.soucedemo.com/
-${BROWSER}      Chrome
-${ENV}          Uat
+${Goibibo_URL}           https://uat.goibibo.com/
+${SouceDemo_URL}         https://uat.soucedemo.com/
+${BROWSER}               Chrome

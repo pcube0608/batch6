@@ -9,5 +9,3 @@ Verify for Search Flights
     When I Select Date
     Then I Select Class
     And I Click on Search flights button
-
-

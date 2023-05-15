@@ -1,5 +1,4 @@
 *** Variables ***
-${URL}          https://www.goibibo.com/
-${URL}          https://Prod.soucedemo.com/
+${Goibibo_URL}          https://Prod.goibibo.com/
+${SouceDemo_URL}        https://Prod.soucedemo.com/
 ${BROWSER}      Chrome
-${ENV}          Prod

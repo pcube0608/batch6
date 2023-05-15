@@ -1,14 +1,13 @@
 *** Settings ***
-Documentation    This Resource file contains implementaion of SouceDemo
+Documentation    This Resource file contains implementaion of SouceDemo TC's
 Library          SeleniumLibrary
 Resource         ../Configuration/${ENV}_Env.robot
 
-
 *** Keywords ***
-Login to the SouceDemo website
 I Navigate to saucedemo.com
-        open browser        https://www.saucedemo.com/      chrome
+        open browser        ${SouceDemo_URL}      ${BROWSER}
         maximize browser window
+        capture page screenshot
 
 I Enter all login details & Login to SouceDemo
         input text  id:user-name    standard_user
@@ -30,6 +29,6 @@ I Fill all checkout details
 
 I Logout from SouceDemo
         click element   id:react-burger-menu-btn
-        sleep       5s
+        sleep           5s
         click element   //a[text()='Logout']
         close browser

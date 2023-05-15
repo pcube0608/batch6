@@ -1,6 +1,4 @@
 *** Variables ***
-${URL}          https://Testing.goibibo.com/
-${URL}          https://www.saucedemo.com/
-${BROWSER}      Chrome
-${ENV}          Testing
-
+${Goibibo_URL}          https://www.goibibo.com/
+${SouceDemo_URL}        https://www.saucedemo.com/
+${BROWSER}              Chrome

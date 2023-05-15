@@ -1,11 +1,11 @@
 *** Settings ***
-Library     SeleniumLibrary
-Resource    ../Configuration/${ENV}_Env.robot
-
+Documentation   This Keyword file contains implementation of goibibo TC's
+Library         SeleniumLibrary
+Resource        ../Configuration/${ENV}_Env.robot
 
 *** Keywords ***
 I Navigate to goibibo.com
-        open browser       ${URL}      ${BROWSER}
+        open browser      ${Goibibo_URL}       ${BROWSER}
         maximize browser window
         click element   //span[@class='logSprite icClose']
 
@@ -35,22 +35,3 @@ I Select Class
 I Click on Search flights button
         wait until element is enabled       //span[text()='SEARCH FLIGHTS']                      10s
         click element   //span[text()='SEARCH FLIGHTS']
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
