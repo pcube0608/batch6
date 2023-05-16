@@ -1,5 +1,5 @@
 *** Settings ***
-Documentation    These Are The Variables That Are Used In rosource_makemytrip
+Documentation    These Are The Variables That Are Used In resource_makemytrip
 
 *** Variables ***
 ${url}      https://www.makemytrip.com
