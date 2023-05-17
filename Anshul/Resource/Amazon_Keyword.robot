@@ -20,17 +20,10 @@ Goto all search categories
 
 Toggle all categories one by one
 
-    @{ListOfCategories} =         get webelements           ${ListOfAllCategories}
+    @{ListOfCategories}         get webelements           ${ListOfAllCategories}
 
-    FOR     ${Categories}       IN            @{ListOfCategorie}
+    FOR     ${Categories}       IN            @{ListOfCategories}
             ${text_categories}    get text       ${Categories}
             log to console      ${text_categories}
     END
 
-
-#Toggle through all categories
-#    ${listof_categories}        get webelements             ${element}
-#    FOR     ${Category}       IN        ${listof_categories}
-#            ${text_category}    get text       ${Category}
-#            log to console      ${text_category}
-#    END
