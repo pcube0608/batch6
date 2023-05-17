@@ -13,17 +13,16 @@ Navigate to Amazon.com
 
 
 
-Goto all search categories
-     click element            ${Allcategories}
-     sleep                    10
+#Goto all search categories
+#     click element            ${Allcategories}
+#     sleep                    10
 
 
 Toggle all categories one by one
 
-    @{ListOfCategories}         get webelements           ${ListOfAllCategories}
+    @{ListOfCategories}              get webelements           ${ListOfAllCategories}
 
     FOR     ${Categories}       IN            @{ListOfCategories}
             ${text_categories}    get text       ${Categories}
             log to console      ${text_categories}
     END
-
