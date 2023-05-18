@@ -9,7 +9,7 @@ ${Username}         standard_user
 ${Password}         secret_sauce
 ${FirstName}        Roshni
 ${LastName}         Patil
-${PostalCode}       411011
+${PostalCode}       411012
 
 *** Keywords ***
 User navigate to SauceDemo Website

@@ -1,3 +1,5 @@
+*** Settings ***
+Documentation    This file contains Addresses of webelement of home page of Saucedemo used in SD keyword file
 
 *** Variables ***
 ${UsernameID}               user-name

@@ -20,7 +20,7 @@ Verify for User sort the product by price low to high
 Verify for User add first product to cart & place order
     Given User navigate to SauceDemo Website
     When User enter valid username
-    Then user enter valid password
+    When user enter valid password
     Then user click on login button
     And user click on product sort container dropdown
 	And user select category price low to high
@@ -35,7 +35,7 @@ Verify for User add first product to cart & place order
 Verify for User Logout from SauceDemo website
     Given User navigate to SauceDemo Website
     When User enter valid username
-    Then user enter valid password
-    And user click on login button
+    When user enter valid password
+    Then user click on login button
     And user click on react burger menu button
 	And click on logout link
